@@ -136,21 +136,17 @@ export default function LandingPage() {
             {features.map((feature) => {
               const Icon = feature.icon;
               return (
-                <TiltedCard key={feature.title}>
-                  <div
-                    className="glass p-6 hover:shadow-glass-lg transition-all duration-300 group h-full flex flex-col"
-                  >
-                    <div className="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center mb-4 group-hover:bg-indigo-100 transition-colors">
-                      <Icon className="w-6 h-6 text-indigo-600" />
-                    </div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                      {feature.title}
-                    </h3>
-                    <p className="text-sm text-gray-500 leading-relaxed flex-1">
-                      {feature.description}
-                    </p>
+                <div key={feature.title} className="hover-circle-fill glass p-6 transition-all duration-300 group h-full flex flex-col rounded-2xl cursor-pointer">
+                  <div className="icon-box w-12 h-12 bg-[#d6a87c]/10 rounded-xl flex items-center justify-center mb-4 transition-colors duration-300">
+                    <Icon className="w-6 h-6 text-[#d6a87c] transition-colors duration-300" />
                   </div>
-                </TiltedCard>
+                  <h3 className="text-lg font-semibold mb-2 transition-colors duration-300">
+                    {feature.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed flex-1 transition-colors duration-300 opacity-80">
+                    {feature.description}
+                  </p>
+                </div>
               );
             })}
           </div>

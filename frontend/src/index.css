@@ -142,3 +142,41 @@
   background-size: 200% 100%;
   animation: shimmer 1.5s ease-in-out infinite;
 }
+
+.hover-circle-fill {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  isolation: isolate;
+}
+
+.hover-circle-fill::before {
+  content: "";
+  position: absolute;
+  bottom: -40px;
+  right: -40px;
+  width: 80px;
+  height: 80px;
+  background-color: #d6a87c;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
+}
+
+.hover-circle-fill:hover::before {
+  transform: scale(15);
+}
+
+.hover-circle-fill:hover h3,
+.hover-circle-fill:hover p {
+  color: #121212 !important;
+}
+
+.hover-circle-fill:hover .icon-box {
+  background-color: rgba(18, 18, 18, 0.1) !important;
+}
+
+.hover-circle-fill:hover .icon-box svg {
+  color: #121212 !important;
+}
