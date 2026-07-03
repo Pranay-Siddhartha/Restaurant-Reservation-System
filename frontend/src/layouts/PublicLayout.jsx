@@ -15,7 +15,6 @@ export default function PublicLayout() {
 
   if (!isAuthenticated) {
     navLinks.push({ to: '/login', label: 'Login' });
-    navLinks.push({ to: '/register', label: 'Register' });
   } else {
     navLinks.push({
       to: isAdmin ? '/admin' : '/dashboard',
