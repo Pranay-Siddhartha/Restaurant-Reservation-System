@@ -1,7 +1,13 @@
 import axios from 'axios';
 
+const rawApiUrl = import.meta.env.VITE_API_URL || '/api';
+// Automatically append /api if the provided URL is an absolute URL and missing the /api suffix
+const finalBaseUrl = (rawApiUrl.startsWith('http') && !rawApiUrl.endsWith('/api'))
+  ? rawApiUrl.replace(/\/+$/, '') + '/api'
+  : rawApiUrl;
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || '/api',
+  baseURL: finalBaseUrl,
   headers: {
     'Content-Type': 'application/json',
   },
