@@ -44,19 +44,20 @@ if (NODE_ENV === 'development') {
 
 // ── CORS ─────────────────────────────────────────────────────────
 const allowedOrigins = CORS_ORIGIN.split(',').map(o => o.trim());
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      // Allow requests with no origin (like mobile apps, curl, or same-origin)
-      if (!origin || allowedOrigins.includes(origin) || allowedOrigins.includes('*')) {
-        callback(null, true);
-      } else {
-        callback(new AppError('Not allowed by CORS', 403));
-      }
-    },
-    credentials: true,
-  })
-);
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps, curl, or same-origin)
+    if (!origin || allowedOrigins.includes(origin) || allowedOrigins.includes('*')) {
+      callback(null, true);
+    } else {
+      callback(new AppError('Not allowed by CORS', 403));
+    }
+  },
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 
 // ── Body parser ──────────────────────────────────────────────────
 app.use(express.json({ limit: '10mb' }));

@@ -10,5 +10,7 @@ module.exports = {
   MONGODB_URI: process.env.MONGODB_URI || 'mongodb://localhost:27017/restaurant-reservations',
   JWT_SECRET: process.env.JWT_SECRET || 'your-super-secret-jwt-key-change-this',
   JWT_EXPIRES_IN: process.env.JWT_EXPIRES_IN || '7d',
-  CORS_ORIGIN: process.env.CORS_ORIGIN || 'http://localhost:3000,http://localhost:5173',
+  CORS_ORIGIN: process.env.CORS_ORIGIN 
+    ? `${process.env.CORS_ORIGIN},http://localhost:3000,http://localhost:5173,https://restaurant-reservation-system-red-seven.vercel.app`
+    : 'http://localhost:3000,http://localhost:5173,https://restaurant-reservation-system-red-seven.vercel.app',
 };
